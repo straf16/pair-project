@@ -11,11 +11,20 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      film: {
+        type: Sequelize.STRING
+      },
+      synopsis: {
+        type: Sequelize.STRING
+      },
       capacity: {
         type: Sequelize.INTEGER
       },
-      film: {
+      schedule: {
         type: Sequelize.STRING
+      },
+      price: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

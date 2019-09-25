@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Viewer.associate = function(models) {
     // associations can be defined here
+    Viewer.belongsToMany(models.Cinema, { through: models.CinemaViewer })
   };
   return Viewer;
 };

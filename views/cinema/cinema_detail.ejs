@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Infinite Cinemas</title>
+</head>
+<body>
+    <h2 style="text-align: center">Infinite Cinemas</h2>
+    <h5><%= cinema.name %></h5>
+    <h5>Film : <%= cinema.film %></h5>
+    <h5><%= cinema.synopsis %></h5>
+    <h5>Price : <%= cinema.price %></h5>
+    <h5>Available Seats: <%= countSeats(cinema) %> Seats</h5>
+    <h5>Time : <%= cinema.schedule %></h5>
+    <form action="/cinemas/<%= ViewerId %>/<%= cinema.id %>" method="post">
+        <label>Quantity: </label>
+        <select name="totalSeat">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <br>
+        <input type="submit" value="checkout">
+    </form>
+</body>
+</html>
