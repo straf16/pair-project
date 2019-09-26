@@ -11,6 +11,9 @@ Router.get('/studio/:id', CinemaController.showCinema)
 Router.get('/register', (req,res) => {
     res.render('register')
 })
+Router.get('/edit', (req, res) => {
+    res.render('edit')
+})
 
 
 
