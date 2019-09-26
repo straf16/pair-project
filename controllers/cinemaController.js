@@ -25,7 +25,6 @@ class CinemaController {
         include: Viewer
       })
       .then(cinema => {
-        const ViewerId = req.params.viewerId
         res.render('cinema/cinema_detail', { cinema, msg: req.query.err, login: req.session.user })
       })
       .catch(err => res.send(err.message))
