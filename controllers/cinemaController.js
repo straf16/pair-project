@@ -28,12 +28,13 @@ class CinemaController {
       })
       .then(cinema => {
         const ViewerId = req.params.viewerId
-        res.render('studio', { cinema, ViewerId })
+        res.render('studio', { cinema, ViewerId,  msg:req.query.err  })
       })
       .catch(err => res.send(err.message))
   }
 
   static addBooking(req, res) {
+    // res.send(req.params)
     let objCreatedTicket = null
     CinemaViewer
       .create({
@@ -46,9 +47,9 @@ class CinemaController {
         return Cinema.findOne({ where: {id: createdTicket.CinemaId} })
       })
       .then(cinema => {
-        res.render('cinema/checkout', { objCreatedTicket, cinema })
+        res.render('checkout', { objCreatedTicket, cinema})
       })
-      .catch(err => res.send(err.message))
+      .catch(err => res.redirect(`/studio/${req.params.id}/?err=${err.message.split(':')[1].slice(1)}`))
   }
 }
 

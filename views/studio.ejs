@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light judul">
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
@@ -19,39 +19,58 @@
                         </li></ul>
                 <%- include('./partials/login') -%>
                 </div>
-            </nav><br>
+            </nav>
+            <%if(msg){ %>
+                <div id="err">
+                    <div class="alert alert-danger" role="alert">
+                        <%= msg %>
+                        <button onclick="this.parentElement.style.display='none'" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            <% } %>
+            <br>
     <h1 class="center page"><%= cinema.name %></h1> <br>
     <div class="card mb-6" style="max-width: 800px; margin: auto;">
-        <h1 class="judul"><%= cinema.title %></h1> <br>
+        <h1 class="judul"><%= cinema.film %></h1> <br>
         <div class="row no-gutters">
             <div class="col-md-6">
             <img style="max-height: 400px; max-width: 300px;" src="<%= cinema.linkIMG %>" class="card-img" alt="...">
             </div>
             <div class="col-md-5">
             <div class="card-body">
-                <h5 class="card-title">Sinopsis :</h5>
-                <p class="card-text"><%= cinema.synopsis %></p>
-                <h5 class="card-title">Price :</h5>
-                <p class="card-text">Rp.<%= cinema.price %></p>
-                <h5 class="card-title">Availabe Seats :</h5>
-                <p class="card-text"><%= cinema.capacity %></p>
-                <h5 class="card-title">Booking Seat :</h5>
+                <h5 class="card-title judul">Sinopsis :</h5>
+                <p class="card-text isi"><%= cinema.synopsis %></p>
+                <h5 class="card-title judul">Price :</h5>
+                <p class="card-text isi">Rp.<%= cinema.price %></p>
+                <h5 class="card-title judul">Availabe Seats :</h5>
+                <p class="card-text isi"><%= cinema.capacity %></p>
+                <h5 class="card-title judul">Booking Seat :</h5>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Qty</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>Choose...</option>
+                <form method="POST" action="/cinema/checkout/<%=cinema.id%>">
+                    <select class="custom-select" name="totalSeat">
+                        <option selected>Silahkan Pilih Jumlah kursi</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                     </select>
                     </div>
                     <button class="btn btn-secondary">Checkout</button>
+                </form>
             </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+        function err(){
+                document.getElementById('err').style.display = 'none'
+        }
+    </script>
 </body>
 </html>

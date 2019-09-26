@@ -6,7 +6,11 @@ Router.get('/', (req,res) => {
 })
 
 Router.get('/cinema', CinemaController.getData)
+Router.post('/cinema/checkout/:id', CinemaController.addBooking)
 Router.get('/studio/:id', CinemaController.showCinema)
+Router.get('/register', (req,res) => {
+    res.render('register')
+})
 
 
 
