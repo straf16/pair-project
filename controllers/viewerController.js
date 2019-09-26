@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt')
 
 class ViewerController {
   static addUser(req, res) {
-    console.log(req.body);
     Viewer
       .create({
         name: req.body.name,
@@ -11,11 +10,6 @@ class ViewerController {
         email: req.body.email
       })
       .then(createdViewer => {
-        req.session.user = {
-          name: req.body.name,
-          email: req.body.email
-        }
-        
         res.redirect(`/cinemas`)
       })
       .catch(err => res.send(err.message))
@@ -32,8 +26,6 @@ class ViewerController {
             name: viewer.name,
             email: viewer.email
           }
-          console.log(req.session.user);
-          
           res.redirect('/cinemas')
         } else {
           throw new Error('Invalid Username/Password')

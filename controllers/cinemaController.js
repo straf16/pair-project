@@ -1,6 +1,7 @@
 const Cinema = require('../models').Cinema
 const Viewer = require('../models').Viewer
 const CinemaViewer = require('../models').CinemaViewer
+const send_email = require('../helpers/send_email')
 
 class CinemaController {
   static getData(req, res) {
@@ -40,12 +41,16 @@ class CinemaController {
       })
       .then(createdTicket => {
         objCreatedTicket = createdTicket
-        return Cinema.findOne({ where: {id: createdTicket.CinemaId} })
+        return Cinema.findOne({ 
+          where: {id: createdTicket.CinemaId},
+          include: Viewer
+        })
       })
       .then(cinema => {
+        send_email(cinema); 
         res.render('cinema/checkout', { objCreatedTicket, cinema })
       })
-      .catch(err => res.send(err.message))
+      .catch(err => res.redirect(`/cinemas/${req.params.id}?err=+${err.message}`))
   }
 }
 
