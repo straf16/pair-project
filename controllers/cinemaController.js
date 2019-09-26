@@ -8,7 +8,7 @@ class CinemaController {
       .findAll()
       .then(cinemas => {
         if (cinemas) {
-          res.render('cinema/show_cinema', { cinemas, msg: req.query.err, login: req.session.user })
+          res.render('cinema/show_cinema', { cinemas, msg: req.query.err, login: req.session.user, success: req.query.success })
         } else {
           throw new Error('unavailable')
         }

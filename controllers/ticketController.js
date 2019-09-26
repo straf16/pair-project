@@ -39,7 +39,7 @@ class TicketController {
     CinemaViewer
       .destroy({where: {ViewerId: req.session.user.id}})
       .then(() => {
-        res.redirect('/cinemas')
+        res.redirect('/cinemas/?success=Data berhasil dihapus!')
       })
       .catch(err => res.send(err.message))
   }
