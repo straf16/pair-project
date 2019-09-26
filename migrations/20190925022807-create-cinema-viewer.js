@@ -8,16 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ticketCode: {
-        type: Sequelize.STRING
-      },
-      schedule: {
-        type: Sequelize.STRING
-      },
       CinemaId: {
         type: Sequelize.INTEGER
       },
       ViewerId: {
+        type: Sequelize.INTEGER
+      },
+      bookingCode: {
+        type: Sequelize.STRING
+      },
+      totalSeat: {
+        type: Sequelize.INTEGER
+      },
+      totalPrice: {
         type: Sequelize.INTEGER
       },
       createdAt: {

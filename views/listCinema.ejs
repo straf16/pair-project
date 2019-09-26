@@ -6,94 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Lora|Montserrat|Parisienne&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        body{
-            background-image: url("/img/concrete_seamless.png");
-        }
-        .container{
-            width: 1000px;
-            padding-top: 50px;
-            background-color: white;
-        }
-        .center{
-            text-align: center;
-        }
-        .flex{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .card{
-            padding: 20px;
-            margin: 30px;
-        }
-
-        .studio {
-            font-family: 'Parisienne', cursive;
-        }
-
-        .judul{
-            font-family: 'Lora', serif;
-        }
-    
-        .card-img-top{
-            height: 300px;
-        }
-
-        .beli{
-            font-family: 'Montserrat', sans-serif;
-            width: 40%;
-            padding: 3px 0;
-            position: relative;
-            right: -130px;
-        }
-
-        .page{
-            font-family: 'Cinzel', serif;
-        }
-    </style>
+    <%- include('./partials/style') -%>
     <title>Ticket Booking</title>
 </head>
 <body>
     <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/cinema">Home <span class="sr-only">(current)</span></a>
+                    </li></ul>
+                <%- include('./partials/login') -%>
+            </div>
+        </nav>
     <h1 class="center page">Daftar Film</h1> <br>
     <div class="flex">
-        <div class="card" style="width: 18rem;">
-            <h2 class="center studio">Studio 1</h2>
-            <img src="/img/thor1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h3 class="judul">Thor Ragnarok</h3>
-                <hr>
-                <a class="btn btn-secondary beli" href="studio">Beli Tiket</a>
+        <% cinemas.forEach(el => { %>
+            <div class="card" style="width: 18rem;">
+                <h2 class="center studio"> <%= el.name %></h2>
+                <img src="<%= el.linkIMG %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="judul"><%= el.title %></h3>
+                    <hr>
+                    <a class="btn btn-secondary beli" href="studio/<%= el.id %>">Beli Tiket</a>
+                </div>
             </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <h2 class="center studio">Studio 2</h2>
-            <img src="/img/ironman.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h3 class="judul">Iron Man 3</h3>
-                <hr>
-                <a class="btn btn-secondary beli" href="">Beli Tiket</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-                <h2 class="center studio">Studio 3</h2>
-            <img src="/img/doraemon.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h3 class="judul">Doraemon</h3>
-                <hr>
-                <a class="btn btn-secondary beli" href="">Beli Tiket</a>
-            </div>
-        </div>
-        <div class="card studio" style="width: 18rem;">
-                <h2 class="center">Studio 4</h2>
-            <img src="/img/thor1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h3 class="judul">Superman</h3>
-                <hr>
-                <a class="btn btn-secondary beli" href="">Beli Tiket</a>
-            </div>
-        </div>
+        <% }) %>
+        
     </div>
 </div>
 </body>
