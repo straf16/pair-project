@@ -7,10 +7,8 @@ class CinemaController {
     Cinema
       .findAll()
       .then(cinemas => {
-        const ViewerId = req.params.viewerId
-        
         if (cinemas) {
-          res.render('cinema/show_cinema', { cinemas, ViewerId })
+          res.render('cinema/show_cinema', { cinemas, msg: req.query.err, login: req.session.user })
         } else {
           throw new Error('unavailable')
         }
@@ -28,7 +26,7 @@ class CinemaController {
       })
       .then(cinema => {
         const ViewerId = req.params.viewerId
-        res.render('cinema/cinema_detail', { cinema, ViewerId })
+        res.render('cinema/cinema_detail', { cinema, msg: req.query.err, login: req.session.user })
       })
       .catch(err => res.send(err.message))
   }
@@ -38,7 +36,7 @@ class CinemaController {
     CinemaViewer
       .create({
         CinemaId: req.params.id,
-        ViewerId: req.params.viewerId,
+        ViewerId: req.session.user.id,
         totalSeat: req.body.totalSeat
       })
       .then(createdTicket => {

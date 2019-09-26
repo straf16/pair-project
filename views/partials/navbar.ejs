@@ -1,0 +1,25 @@
+
+<% if(login) { %>
+    <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/cinemas">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    <a class="btn btn-outline-dark my-2 my-sm-0" type="submit" href="">Cancel Ticket</a>
+    <a class="btn btn-outline-dark my-2 my-sm-0" type="submit" href="">Change Ticket Booked</a>
+    <a class="btn btn-outline-dark my-2 my-sm-0" type="submit" href="/logout">Logout</a>
+<% } else { %>
+    <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/cinemas">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+            </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" style="margin-right: -20%" action="/login" method="POST">
+            <input class="form-control " style="width: 30%; margin: 0 5px" type="text" name="email" placeholder="email" aria-label="Search">
+            <input class="form-control" style="width: 20%; margin: 0 5px" type="password" name="password" placeholder="password" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+    </form>    
+<% } %>

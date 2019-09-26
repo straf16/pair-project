@@ -4,15 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Infinite Cinemas</title>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Lora|Montserrat|Parisienne&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%- include('../partials/style') -%>
+    <title>Ticket Booking</title>
 </head>
-<body style="text-align: center">
-    <h2>Infinite Cinemas</h2>
-    <h4>Your Booking Success</h4>
-    <h5><%= cinema.name %> | <%= cinema.film %></h5>
-    <h5>Your Booking Code: <%= objCreatedTicket.bookingCode %></h5>
-    <h5>Total Price : <%= objCreatedTicket.totalPrice %></h5>
-    <h5><%= cinema.schedule %></h5>
-    <a href="/"><button>CLOSE</button></a>
+<body>
+    <div class="container">
+            <nav class="navbar bg-secondary navbar-expand-lg navbar-light bg-light judul">
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/cinema">Home <span class="sr-only">(current)</span></a>
+                        </li></ul>
+                <%- include('../partials/login') -%>
+                </div>
+            </nav><br>
+    <h1 class="center page"><%= cinema.name %></h1> <br>
+    <div class="card mb-6" style="max-width: 800px; margin: auto;">
+        <h1 class="judul"><%= cinema.film %></h1> <br>
+        <div class="row no-gutters">
+            <div class="col-md-6">
+            <img style="max-height: 400px; max-width: 300px;" src="<%= cinema.linkIMG %>" class="card-img" alt="...">
+            </div>
+            <div class="col-md-5">
+                <h3>Your Booking Success</h3>
+                <div class="card-body">
+                    <hr>
+                    <h5 class="card-title judul">Your Booking Code</h5>
+                    <p class="card-text isi"><%= objCreatedTicket.bookingCode %></p>
+                    <h5 class="card-title judul">Total Price :</h5>
+                    <p class="card-text isi"><%= objCreatedTicket.totalPrice %></p>
+                    <h5 class="card-title judul">Cinema Schedule :</h5>
+                    <p class="card-text isi"><%= cinema.schedule %></p>
+                    <a class="btn btn-secondary" href="/">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

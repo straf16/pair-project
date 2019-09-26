@@ -4,12 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Infinite Cinemas</title>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Lora|Montserrat|Parisienne&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%- include('../partials/style') -%>
+    <title>Ticket Booking</title>
 </head>
-<body style="text-align: center">
-    <h2>Infinite Cinemas</h2>
-    <% for (let i = 0; i < cinemas.length; i++) { %>
-        <li><a href="/cinemas/<%= ViewerId %>/<%= cinemas[i].id %>"><%= cinemas[i].name %>: <%= cinemas[i].film %></a></li>
-    <% } %>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light judul">
+            <div class="collapse navbar-collapse" id="navbarText">
+                <%- include('../partials/navbar') -%>
+                <%- include('../partials/login') -%>
+            </div>
+        </nav> <br> 
+        <%- include('../partials/msg') -%>
+        <br> <br>
+        <h1 class="center page">Infinite Cinemas</h1> <br>
+    <div class="flex">
+        <% cinemas.forEach(cinema => { %>
+            <div class="card" style="width: 18rem;">
+                <h2 class="center studio"> <%= cinema.name %></h2>
+                <img src="<%= cinema.linkIMG %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="judul"><%= cinema.film %></h3>
+                    <hr>
+                    <a class="btn btn-secondary beli" href="/cinemas/<%= cinema.id %>">Buy</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+<%- include('../partials/script') -%>
 </body>
 </html>

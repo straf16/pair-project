@@ -4,25 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Infinite Cinemas</title>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Lora|Montserrat|Parisienne&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%- include('../partials/style') -%>
+    <title>Ticket Booking</title>
 </head>
 <body>
-    <h2 style="text-align: center">Infinite Cinemas</h2>
-    <h5><%= cinema.name %></h5>
-    <h5>Film : <%= cinema.film %></h5>
-    <h5><%= cinema.synopsis %></h5>
-    <h5>Price : <%= cinema.price %></h5>
-    <h5>Available Seats: <%= countSeats(cinema) %> Seats</h5>
-    <h5>Time : <%= cinema.schedule %></h5>
-    <form action="/cinemas/<%= ViewerId %>/<%= cinema.id %>" method="post">
-        <label>Quantity: </label>
-        <select name="totalSeat">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light judul">
+            <div class="collapse navbar-collapse" id="navbarText">
+                <%- include('../partials/navbar') -%>
+                <%- include('../partials/login') -%>
+            </div>
+        </nav>
+        <%- include('../partials/msg') -%>
         <br>
-        <input type="submit" value="checkout">
-    </form>
+    <h1 class="center page"><%= cinema.name %></h1> <br>
+    <div class="card mb-6" style="max-width: 800px; margin: auto;">
+        <h1 class="judul"><%= cinema.film %></h1> <br>
+        <div class="row no-gutters">
+            <div class="col-md-6">
+            <img style="max-height: 400px; max-width: 300px;" src="<%= cinema.linkIMG %>" class="card-img" alt="...">
+            </div>
+            <div class="col-md-5">
+            <div class="card-body">
+                <h5 class="card-title judul">Sinopsis :</h5>
+                <p class="card-text isi"><%= cinema.synopsis %></p>
+                <h5 class="card-title judul">Price :</h5>
+                <p class="card-text isi">Rp.<%= cinema.price %></p>
+                <h5 class="card-title judul">Availabe Seats :</h5>
+                <p class="card-text isi"><%= cinema.capacity %></p>
+                <h5 class="card-title judul">Booking Seat :</h5>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Qty</label>
+                    </div>
+                <form method="POST" action="/cinemas/<%=cinema.id%>">
+                    <select class="custom-select" name="totalSeat">
+                        <option selected>Booking your seats</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    </div>
+                    <button class="btn btn-secondary">Checkout</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../partials/script') -%>
 </body>
 </html>
