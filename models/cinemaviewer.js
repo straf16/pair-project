@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     totalPrice: DataTypes.INTEGER
   }, {
     sequelize,
+    modelName: 'CinemaViewer',
     hooks: {
       beforeCreate (instance, options) {
         return classModel.Cinema
@@ -24,8 +25,7 @@ module.exports = (sequelize, DataTypes) => {
             instance.setDataValue('totalPrice', instance.totalSeat * cinema.price)
           })
       }
-    },
-    modelName: 'CinemaViewer'
+    }
   });
   CinemaViewer.associate = function(models) {
     // associations can be defined here

@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const ViewerController = require('../controllers/viewerController')
-
+const TicketController = require('../controllers/ticketController')
 const cinemaRoutes = require('./cinemaRoutes')
 
 // route untuk menghubungkan router cinema
@@ -23,7 +23,17 @@ router.get('/login', (req, res) => {
 })
 router.post('/login', ViewerController.loginUser)
 
-// route untuk logout user[]
+// route untuk logout user
 router.get('/logout', ViewerController.logoutUser)
+
+// route untuk menampilkan form perubahan tiket
+router.get('/editTicket', TicketController.formEdit)
+// route untuk perubahan ticket
+router.post('/editTicket', TicketController.updateTicket)
+
+// route untuk confirm delete
+router.get('/deleteTicket', TicketController.confirmDelete)
+// route untuk delete post
+router.post('/deleteTicket', TicketController.deleteTicket)
 
 module.exports = router

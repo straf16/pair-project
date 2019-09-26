@@ -1,5 +1,6 @@
 const express = require('express')
 const session = require('express-session')
+const nodemailer = require('nodemailer')
 const app = express()
 const PORT = 3000
 const countSeats = require('./helpers/countSeats')

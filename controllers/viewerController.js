@@ -32,6 +32,8 @@ class ViewerController {
             name: viewer.name,
             email: viewer.email
           }
+          console.log(req.session.user);
+          
           res.redirect('/cinemas')
         } else {
           throw new Error('Invalid Username/Password')
